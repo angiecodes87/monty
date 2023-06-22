@@ -1,4 +1,6 @@
 #include "monty.h"
+#include <stdio.h>
+
 /**
  * read_file - reads a bytecode file and runs commands
  * @filename: pathname to file
@@ -16,7 +18,6 @@ void read_file(char *filename, stack_t **stack)
 	int line_count = 1;
 	instruct_func s;
 	int check;
-	int read;
 
 	FILE *file = fopen(filename, "r");
 
@@ -26,7 +27,7 @@ void read_file(char *filename, stack_t **stack)
 	exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&var_global.buffer, &i, file)) != -1)
+	while (fgets(var_global.buffer, i, var_global.file) != NULL)
 	{
 	line = parse_line(var_global.buffer, stack, line_count);
 	if (line == NULL || line[0] == '#')
@@ -67,7 +68,6 @@ instruct_func get_op_func(char *str)
 	{"pint", _pint},
 	{"pop", _pop},
 	{"swap", _swap},
-	{"add", _add},
 	{"nop", _nop},
 	{"sub", _sub},
 	{"mul", _mul},
@@ -96,10 +96,10 @@ instruct_func get_op_func(char *str)
  */
 int isnumber(char *str)
 {
+	unsigned int i = 0;
+
 	if (str == NULL)
 	return (0);
-
-	int i = 0;
 
 	if (str[i] == '-')
 	i++;
@@ -151,12 +151,12 @@ char *parse_line(char *line, stack_t **stack, unsigned int line_number)
  */
 int main(int argc, char **argv)
 {
+	stack_t *stack = NULL;
 	if (argc != 2)
 	{
 	fprintf(stderr, "Usage: %s filename\n", argv[0]);
 	return (EXIT_FAILURE);
 	}
-	stack_t *stack = NULL;
 
 	read_file(argv[1], &stack);
 

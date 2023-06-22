@@ -6,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
+#include "monty_types.h"
 
 extern int push_arg;
 
@@ -16,13 +17,13 @@ extern int push_arg;
  * @next: points to the next element of the stack (or queue)
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO
- */
-typedef struct stack_s
-{
+
+typedef struct stack_s {
 	int n;
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+*/
 
 /**
  * struct instruction_s - opcoode and its function
@@ -75,7 +76,6 @@ void _pstr(stack_t **stack, unsigned int line_number);
 
 /*Functions math*/
 void _sub(stack_t **stack, unsigned int line_number);
-void _add(stack_t **stack, unsigned int line_number);
 void _mul(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);

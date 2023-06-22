@@ -1,5 +1,14 @@
+#include "monty.h"
+#include "monty_types.h"
 /**
- * _swap - swap top of stack y second top stack
+struct stack_s
+{
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
+}*/
+/**
+ * stack_t;- swap top of stack y second top stack
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */

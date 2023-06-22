@@ -1,3 +1,4 @@
+#include "monty.h"
 /**
  * _push - push int to a stack
  * @stack: pointer to linked list stack
