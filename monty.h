@@ -6,7 +6,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
-#include "monty_types.h"
 
 extern int push_arg;
 
@@ -17,13 +16,12 @@ extern int push_arg;
  * @next: points to the next element of the stack (or queue)
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO
-
+ */
 typedef struct stack_s {
 	int n;
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
-*/
 
 /**
  * struct instruction_s - opcoode and its function
@@ -58,7 +56,8 @@ extern global_var var_global;
 void read_file(char *filename, stack_t **stack);
 char *parse_line(char *line, stack_t **stack, unsigned int line_number);
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
-instruct_func get_op_func(char *str);
+instruct_func get_op_func(char *str)
+void pop(stack_t **stack, unsigned int line_number);
 
 /*Functions Monty*/
 void _pall(stack_t **stack, unsigned int line_number);
@@ -69,6 +68,7 @@ void _swap(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _rotl(stack_t **stack, unsigned int line_number);
 void _rotr(stack_t **stack, unsigned int line_number);
+
 
 /*Functions string ascci */
 void _pchar(stack_t **stack, unsigned int line_number);
